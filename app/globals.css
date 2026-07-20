@@ -133,6 +133,9 @@ img { max-width: 100%; }
   cursor: pointer; font-weight: 400; transition: background .3s ease;
 }
 .contact-form button:hover { background: var(--gold); }
+.contact-form .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.contact-form .form-error { margin: 0; font-size: 14px; color: #8a2f2f; }
+.contact-form button:disabled { opacity: 0.6; cursor: default; }
 .form-success { border: 1px solid rgba(184,137,59,0.5); padding: 56px 44px; text-align: center; background: var(--paper); }
 .form-success .title { font-family: var(--serif); font-weight: 300; font-size: 30px; margin-bottom: 12px; letter-spacing: -0.01em; }
 .form-success p { margin: 0; color: var(--body-grey); font-size: 14.5px; }
