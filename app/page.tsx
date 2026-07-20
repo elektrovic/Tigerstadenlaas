@@ -4,6 +4,11 @@ import SiteHeader from "@/components/SiteHeader";
 import Monogram from "@/components/Monogram";
 import ContactForm from "@/components/ContactForm";
 import RevealInit from "@/components/RevealInit";
+import Referanser from "@/components/Referanser";
+import { hentAnmeldelser } from "@/lib/googleReviews";
+
+/* Regenerer forsiden hver 6. time så Google-vurderingen holdes fersk */
+export const revalidate = 21600;
 
 export const metadata: Metadata = {
   title: "Låsesmed Oslo, Asker og Bærum — Døgnvakt hele året | Tigerstaden Lås & Sikkerhet",
@@ -59,10 +64,23 @@ const jsonLd = {
   ],
 };
 
-export default function Home() {
+export default async function Home() {
+  const anmeldelser = await hentAnmeldelser();
+  /* aggregateRating legges kun inn med ekte tall fra Google (bygg/revalidate),
+     aldri hardkodet — jf. spesifikasjonen i designpakken */
+  const schema = anmeldelser
+    ? {
+        ...jsonLd,
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: anmeldelser.vurdering,
+          reviewCount: anmeldelser.antall,
+        },
+      }
+    : jsonLd;
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <RevealInit />
       <SiteHeader active="hjem" ctaHref="#kontakt" />
 
@@ -380,6 +398,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Referanser — vises når Google Business-profilen er koblet til */}
+      {anmeldelser && <Referanser data={anmeldelser} />}
 
       {/* Døgnvakt */}
       <section id="dognvakt" className="emergency">

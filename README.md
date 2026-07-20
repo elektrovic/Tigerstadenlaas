@@ -34,12 +34,42 @@ Heritage Gold `#B8893B` (kun aksent). Typografi: Fraunces (display, 300) +
 Inter (brødtekst, 300–500) fra Google Fonts. Ingen border-radius, ingen
 skygger, 1px hårlinjer. Alt i `app/globals.css`.
 
+## Google-anmeldelser (Google Business Profile)
+
+Forsiden kan vise ekte Google-anmeldelser, samlet vurdering og
+`aggregateRating` i SEO-schemaet. Integrasjonen er ferdig kodet
+(`lib/googleReviews.ts` + `components/Referanser.tsx`) og aktiveres ved å
+sette to miljøvariabler — uten dem skjules referanseseksjonen og siden
+fungerer som før.
+
+**Oppsett:**
+
+1. Sørg for en verifisert bedriftsprofil på
+   [business.google.com](https://business.google.com)
+   (Tigerstaden Lås og Sikkerhet, Sandakerveien 138, 0484 Oslo).
+2. I [Google Cloud Console](https://console.cloud.google.com): opprett
+   prosjekt → aktiver **Places API** → opprett API-nøkkel. Begrens nøkkelen
+   til Places API.
+3. Finn **Place ID** via
+   [Place ID Finder](https://developers.google.com/maps/documentation/places/web-service/place-id).
+4. Sett miljøvariablene (lokalt i `.env.local`, i produksjon under
+   Vercel → Settings → Environment Variables) og redeploy:
+
+   ```
+   GOOGLE_PLACES_API_KEY=…
+   GOOGLE_PLACE_ID=…
+   ```
+
+Nøkkelen brukes kun på serveren og når aldri nettleseren. Svar fra Google
+caches i 6 timer. Kun anmeldelser med 4–5 stjerner vises (maks 6, tekster
+over 220 tegn kuttes). Feiler kallet etter at integrasjonen er slått på,
+viser karusellen designpakkens reservesitater i stedet for å stå tom.
+
 ## Gjenstår / neste steg
 
 - **Kontaktskjema-backend**: skjemaet viser i dag kun en takkemelding
   (ingen backend). Kobles til e-post/CRM ved lansering.
-- **Google Reviews**: planlagt integrasjon mot Google Business Profile /
-  Places API via backend-proxy — se `PROMPT - Google Business-integrasjon.md`
-  i designpakken. Krever PLACE_ID og `GOOGLE_PLACES_API_KEY`.
+- **Google-anmeldelser**: kodet ferdig — aktiveres med miljøvariablene
+  over når bedriftsprofilen og API-nøkkelen er på plass.
 - **Bilder**: Unsplash-URL-er er midlertidige plassholdere — bytt til egne
   prosjektfoto når de foreligger.
