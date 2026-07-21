@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" fill="none" role="img" aria-label="Tigerstaden Lås & Sikkerhet monogram">
+  <defs>
+    <mask id="keyhole">
+      <rect width="200" height="200" fill="#fff"/>
+      <circle cx="100" cy="91" r="8" fill="#000"/>
+      <path d="M95.5,96 L104.5,96 L108,124 L92,124 Z" fill="#000"/>
+    </mask>
+  </defs>
+  <line x1="60" y1="36" x2="140" y2="36" stroke="#B8893B" stroke-width="3"/>
+  <g fill="#1A1A1A" mask="url(#keyhole)">
+    <rect x="40" y="57" width="120" height="5"/>
+    <rect x="90" y="62" width="20" height="91"/>
+    <rect x="76" y="153" width="48" height="4"/>
+  </g>
+  <line x1="60" y1="174" x2="140" y2="174" stroke="#B8893B" stroke-width="3"/>
+</svg>
