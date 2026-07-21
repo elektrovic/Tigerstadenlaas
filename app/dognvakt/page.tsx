@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Døgnvakt — Låsesmed hele døgnet i Oslo, Asker og Bærum | Tigerstaden Lås & Sikkerhet",
   description:
     "Døgnåpen låsesmed i Oslo, Asker og Bærum. Utelåst, innbrudd eller skadet lås? Ring 904 13 607 — vi rykker ut hele døgnet, hele året. Fast utrykningspris, ingen skjulte tillegg.",
+  alternates: { canonical: "/dognvakt" },
 };
 
 export default function Dognvakt() {

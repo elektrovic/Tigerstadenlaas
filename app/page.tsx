@@ -4,6 +4,12 @@ import SiteHeader from "@/components/SiteHeader";
 import Monogram from "@/components/Monogram";
 import ContactForm from "@/components/ContactForm";
 import RevealInit from "@/components/RevealInit";
+import Referanser from "@/components/Referanser";
+import { hentAnmeldelser } from "@/lib/googleReviews";
+import { SITE_URL } from "@/lib/site";
+
+/* Regenerer forsiden hver 6. time så Google-vurderingen holdes fersk */
+export const revalidate = 21600;
 
 export const metadata: Metadata = {
   title: "Låsesmed Oslo, Asker og Bærum — Døgnvakt hele året | Tigerstaden Lås & Sikkerhet",
@@ -11,12 +17,15 @@ export const metadata: Metadata = {
     "Trenger du låsesmed i Oslo, Asker eller Bærum? Vi bytter låser, monterer sikkerhetsdører og branndører, og installerer adgangskontroll og alarm. Døgnvakt hele året — ring 904 13 607.",
   keywords:
     "låsesmed Oslo, låsesmed Asker, låsesmed Bærum, låsesmed døgnvakt, bytte lås Oslo, sikkerhetsdør Oslo, branndør Oslo, dørinnsetting, adgangskontroll Oslo, porttelefon borettslag, smartlås, låssystem sameie",
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Låsesmed Oslo, Asker og Bærum — Døgnvakt hele året | Tigerstaden Lås & Sikkerhet",
     description:
       "Låsesmed, sikkerhet og dørinnsetting for hjem, borettslag og næring. Døgnvakt hele året — ring 904 13 607.",
     type: "website",
     locale: "nb_NO",
+    url: "/",
+    siteName: "Tigerstaden Lås & Sikkerhet",
   },
 };
 
@@ -24,6 +33,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Locksmith",
   name: "Tigerstaden Lås & Sikkerhet",
+  url: SITE_URL,
   description:
     "Låsesmed med døgnvakt i Oslo, Asker og Bærum. Låsbytte, låssystemer, smartlås, adgangskontroll, porttelefon, alarm og montering av sikkerhetsdører og branndører.",
   telephone: "+47 904 13 607",
@@ -59,10 +69,23 @@ const jsonLd = {
   ],
 };
 
-export default function Home() {
+export default async function Home() {
+  const anmeldelser = await hentAnmeldelser();
+  /* aggregateRating legges kun inn med ekte tall fra Google (bygg/revalidate),
+     aldri hardkodet — jf. spesifikasjonen i designpakken */
+  const schema = anmeldelser
+    ? {
+        ...jsonLd,
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: anmeldelser.vurdering,
+          reviewCount: anmeldelser.antall,
+        },
+      }
+    : jsonLd;
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <RevealInit />
       <SiteHeader active="hjem" ctaHref="#kontakt" />
 
@@ -380,6 +403,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Referanser — vises når Google Business-profilen er koblet til */}
+      {anmeldelser && <Referanser data={anmeldelser} />}
 
       {/* Døgnvakt */}
       <section id="dognvakt" className="emergency">

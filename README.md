@@ -34,12 +34,69 @@ Heritage Gold `#B8893B` (kun aksent). Typografi: Fraunces (display, 300) +
 Inter (brødtekst, 300–500) fra Google Fonts. Ingen border-radius, ingen
 skygger, 1px hårlinjer. Alt i `app/globals.css`.
 
+## Kontaktskjema (e-post via Resend)
+
+Skjemaene på forsiden og `/kontakt` sender henvendelser til en server-side
+API-rute (`app/api/kontakt/route.ts`) som validerer, stopper spam
+(honeypot-felt + takstbegrensning på IP) og videresender henvendelsen som
+e-post via [Resend](https://resend.com). E-posten sendes som ren tekst med
+avsenderens adresse i `reply_to`, så du kan svare direkte.
+
+Uten `RESEND_API_KEY` svarer ruten 503 og skjemaet ber folk ringe i stedet.
+
+**Oppsett:**
+
+1. Opprett en gratis konto på [resend.com](https://resend.com) og lag en
+   API-nøkkel.
+2. (Anbefalt) Verifiser domenet `tigerstadenlas.no` i Resend, og sett
+   `KONTAKT_AVSENDER` til f.eks. `Tigerstaden nettside <post@tigerstadenlas.no>`.
+   Uten verifisert domene kan Resends testavsender (`onboarding@resend.dev`)
+   brukes til utprøving.
+3. Sett miljøvariablene (lokalt i `.env.local`, i produksjon under
+   Vercel → Settings → Environment Variables) og redeploy:
+
+   ```
+   RESEND_API_KEY=…
+   KONTAKT_MOTTAKER=post@tigerstadenlas.no   # valgfritt
+   KONTAKT_AVSENDER=…                          # valgfritt
+   ```
+
+## Google-anmeldelser (Google Business Profile)
+
+Forsiden kan vise ekte Google-anmeldelser, samlet vurdering og
+`aggregateRating` i SEO-schemaet. Integrasjonen er ferdig kodet
+(`lib/googleReviews.ts` + `components/Referanser.tsx`) og aktiveres ved å
+sette to miljøvariabler — uten dem skjules referanseseksjonen og siden
+fungerer som før.
+
+**Oppsett:**
+
+1. Sørg for en verifisert bedriftsprofil på
+   [business.google.com](https://business.google.com)
+   (Tigerstaden Lås og Sikkerhet, Sandakerveien 138, 0484 Oslo).
+2. I [Google Cloud Console](https://console.cloud.google.com): opprett
+   prosjekt → aktiver **Places API** → opprett API-nøkkel. Begrens nøkkelen
+   til Places API.
+3. Finn **Place ID** via
+   [Place ID Finder](https://developers.google.com/maps/documentation/places/web-service/place-id).
+4. Sett miljøvariablene (lokalt i `.env.local`, i produksjon under
+   Vercel → Settings → Environment Variables) og redeploy:
+
+   ```
+   GOOGLE_PLACES_API_KEY=…
+   GOOGLE_PLACE_ID=…
+   ```
+
+Nøkkelen brukes kun på serveren og når aldri nettleseren. Svar fra Google
+caches i 6 timer. Kun anmeldelser med 4–5 stjerner vises (maks 6, tekster
+over 220 tegn kuttes). Feiler kallet etter at integrasjonen er slått på,
+viser karusellen designpakkens reservesitater i stedet for å stå tom.
+
 ## Gjenstår / neste steg
 
-- **Kontaktskjema-backend**: skjemaet viser i dag kun en takkemelding
-  (ingen backend). Kobles til e-post/CRM ved lansering.
-- **Google Reviews**: planlagt integrasjon mot Google Business Profile /
-  Places API via backend-proxy — se `PROMPT - Google Business-integrasjon.md`
-  i designpakken. Krever PLACE_ID og `GOOGLE_PLACES_API_KEY`.
+- **Kontaktskjema**: backend er kodet ferdig — aktiveres med `RESEND_API_KEY`
+  (se over). Uten nøkkelen ber skjemaet folk ringe.
+- **Google-anmeldelser**: kodet ferdig — aktiveres med miljøvariablene
+  over når bedriftsprofilen og API-nøkkelen er på plass.
 - **Bilder**: Unsplash-URL-er er midlertidige plassholdere — bytt til egne
   prosjektfoto når de foreligger.

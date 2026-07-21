@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 190" width="600" height="190" fill="none" role="img" aria-label="Tigerstaden Lås & Sikkerhet">
+  <defs>
+    <mask id="keyhole">
+      <rect width="200" height="200" fill="#fff"/>
+      <circle cx="100" cy="91" r="8" fill="#000"/>
+      <path d="M95.5,96 L104.5,96 L108,124 L92,124 Z" fill="#000"/>
+    </mask>
+  </defs>
+  <!-- Monogram: nøkkelhull-T -->
+  <g transform="translate(24,20) scale(0.75)">
+    <line x1="60" y1="36" x2="140" y2="36" stroke="#B8893B" stroke-width="3"/>
+    <g fill="#1A1A1A" mask="url(#keyhole)">
+      <rect x="40" y="57" width="120" height="5"/>
+      <rect x="90" y="62" width="20" height="91"/>
+      <rect x="76" y="153" width="48" height="4"/>
+    </g>
+    <line x1="60" y1="174" x2="140" y2="174" stroke="#B8893B" stroke-width="3"/>
+  </g>
+  <!-- Ordmerke -->
+  <text x="196" y="98" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="54" font-weight="400" letter-spacing="-0.5" fill="#1A1A1A">Tigerstaden</text>
+  <text x="198" y="132" font-family="Inter, Arial, Helvetica, sans-serif" font-size="17" font-weight="500" letter-spacing="6" fill="#B8893B">LÅS &amp; SIKKERHET</text>
+</svg>

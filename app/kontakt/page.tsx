@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Kontakt oss — Tigerstaden Lås & Sikkerhet | Låsesmed i Oslo, Asker og Bærum",
   description:
     "Kontakt Tigerstaden Lås & Sikkerhet. Besøk oss i Sandakerveien 138, Oslo, ring 904 13 607 eller send en henvendelse — vi svarer raskt. Døgnvakt hele året.",
+  alternates: { canonical: "/kontakt" },
 };
 
 export default function Kontakt() {

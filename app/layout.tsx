@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import TopBar from "@/components/TopBar";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Tigerstaden Lås & Sikkerhet",
   description:
     "Låsesmed, sikkerhet og dørinnsetting for hjem, borettslag og næring i Oslo, Asker og Bærum. Døgnvakt hele året — ring 904 13 607.",

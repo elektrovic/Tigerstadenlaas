@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Om oss — Tigerstaden Lås & Sikkerhet | Låsesmed i Oslo, Asker og Bærum",
   description:
     "Tigerstaden Lås & Sikkerhet er en del av Halland Gruppen. Låsesmed med fagbrev, én fast kontaktperson og FG-godkjente løsninger i Oslo, Asker og Bærum.",
+  alternates: { canonical: "/om-oss" },
 };
 
 export default function OmOss() {

@@ -133,6 +133,9 @@ img { max-width: 100%; }
   cursor: pointer; font-weight: 400; transition: background .3s ease;
 }
 .contact-form button:hover { background: var(--gold); }
+.contact-form .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.contact-form .form-error { margin: 0; font-size: 14px; color: #8a2f2f; }
+.contact-form button:disabled { opacity: 0.6; cursor: default; }
 .form-success { border: 1px solid rgba(184,137,59,0.5); padding: 56px 44px; text-align: center; background: var(--paper); }
 .form-success .title { font-family: var(--serif); font-weight: 300; font-size: 30px; margin-bottom: 12px; letter-spacing: -0.01em; }
 .form-success p { margin: 0; color: var(--body-grey); font-size: 14.5px; }
@@ -238,6 +241,26 @@ img { max-width: 100%; }
 .home-contact h2 { font-size: clamp(34px, 4.5vw, 56px); margin-bottom: 22px; }
 .home-contact .lead { margin: 0 0 44px; color: var(--body-grey); max-width: 420px; }
 .home-contact .fact-list { max-width: 420px; }
+
+/* ===== Referanser (Google-anmeldelser) ===== */
+
+.testimonials { border-top: 1px solid var(--hairline); background: var(--paper); padding: clamp(80px, 10vw, 140px) 0; }
+.testimonials-inner { max-width: 880px; text-align: center; }
+.testimonials .eyebrow { margin-bottom: 26px; }
+.testimonials .stars { color: var(--gold); font-size: 17px; letter-spacing: 0.3em; margin-bottom: 26px; }
+.testimonials blockquote { margin: 0; }
+.testimonials blockquote p { font-family: var(--serif); font-weight: 300; font-size: clamp(24px, 3.2vw, 40px); line-height: 1.35; letter-spacing: -0.01em; margin: 0 0 28px; text-wrap: balance; }
+.testimonials blockquote footer { display: flex; flex-direction: column; gap: 8px; align-items: center; }
+.testimonials .who { font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 500; }
+.testimonials .source { font-size: 11.5px; color: rgba(26,26,26,0.45); letter-spacing: 0.06em; }
+.testimonials .controls { display: flex; align-items: center; justify-content: center; gap: 28px; margin-top: 40px; }
+.testimonials .controls button { background: none; border: none; cursor: pointer; font-family: var(--sans); font-size: 18px; color: var(--ink); padding: 6px 10px; transition: color .3s ease; }
+.testimonials .controls button:hover { color: var(--gold); }
+.testimonials .dots { display: flex; gap: 10px; align-items: center; }
+.testimonials .dot { width: 28px; height: 2px; background: rgba(26,26,26,0.18); transition: background .3s ease; }
+.testimonials .dot.active { background: var(--gold); }
+.testimonials .google-meta { margin-top: 36px; display: flex; gap: 10px 28px; justify-content: center; flex-wrap: wrap; font-size: 13px; color: var(--body-grey); }
+.testimonials .google-meta a { border-bottom: 1px solid var(--gold); padding-bottom: 3px; font-weight: 400; }
 
 /* ===== Footer ===== */
 
