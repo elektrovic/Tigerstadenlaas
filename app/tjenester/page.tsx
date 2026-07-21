@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Våre tjenester — Låsesmed i Oslo, Asker og Bærum | Tigerstaden Lås & Sikkerhet",
   description:
     "Komplett oversikt over våre låsesmedtjenester i Oslo og omegn: akutt låsservice, låsbytte, elektroniske låssystemer, adgangskontroll, porttelefoni, dørautomatikk, innbruddssikring, sveis og metall, og nye dører.",
+  alternates: { canonical: "/tjenester" },
 };
 
 export default function Tjenester() {

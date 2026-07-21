@@ -6,6 +6,7 @@ import ContactForm from "@/components/ContactForm";
 import RevealInit from "@/components/RevealInit";
 import Referanser from "@/components/Referanser";
 import { hentAnmeldelser } from "@/lib/googleReviews";
+import { SITE_URL } from "@/lib/site";
 
 /* Regenerer forsiden hver 6. time så Google-vurderingen holdes fersk */
 export const revalidate = 21600;
@@ -16,12 +17,15 @@ export const metadata: Metadata = {
     "Trenger du låsesmed i Oslo, Asker eller Bærum? Vi bytter låser, monterer sikkerhetsdører og branndører, og installerer adgangskontroll og alarm. Døgnvakt hele året — ring 904 13 607.",
   keywords:
     "låsesmed Oslo, låsesmed Asker, låsesmed Bærum, låsesmed døgnvakt, bytte lås Oslo, sikkerhetsdør Oslo, branndør Oslo, dørinnsetting, adgangskontroll Oslo, porttelefon borettslag, smartlås, låssystem sameie",
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Låsesmed Oslo, Asker og Bærum — Døgnvakt hele året | Tigerstaden Lås & Sikkerhet",
     description:
       "Låsesmed, sikkerhet og dørinnsetting for hjem, borettslag og næring. Døgnvakt hele året — ring 904 13 607.",
     type: "website",
     locale: "nb_NO",
+    url: "/",
+    siteName: "Tigerstaden Lås & Sikkerhet",
   },
 };
 
@@ -29,6 +33,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Locksmith",
   name: "Tigerstaden Lås & Sikkerhet",
+  url: SITE_URL,
   description:
     "Låsesmed med døgnvakt i Oslo, Asker og Bærum. Låsbytte, låssystemer, smartlås, adgangskontroll, porttelefon, alarm og montering av sikkerhetsdører og branndører.",
   telephone: "+47 904 13 607",
