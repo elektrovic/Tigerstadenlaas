@@ -10,7 +10,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 
-const MOTTAKER = process.env.KONTAKT_MOTTAKER ?? "post@tigerstadenlas.no";
+const MOTTAKER = process.env.KONTAKT_MOTTAKER ?? "victor@tigerstadenelektro.no";
 /* Avsender må være et domene verifisert i Resend. Inntil tigerstadenlas.no
    er verifisert der, fungerer Resends testavsender for utprøving. */
 const AVSENDER = process.env.KONTAKT_AVSENDER ?? "Tigerstaden nettside <onboarding@resend.dev>";
