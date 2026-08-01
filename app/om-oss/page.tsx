@@ -35,9 +35,12 @@ export default function OmOss() {
         <div className="container story-inner">
           <div className="image">
             <img
-              src="https://images.unsplash.com/photo-1607710533910-d7cdffd9e593?q=75&w=1400&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1607710533910-d7cdffd9e593?q=75&w=1080&auto=format&fit=crop"
+              srcSet="https://images.unsplash.com/photo-1607710533910-d7cdffd9e593?q=75&w=480&auto=format&fit=crop 480w, https://images.unsplash.com/photo-1607710533910-d7cdffd9e593?q=75&w=768&auto=format&fit=crop 768w, https://images.unsplash.com/photo-1607710533910-d7cdffd9e593?q=75&w=1080&auto=format&fit=crop 1080w, https://images.unsplash.com/photo-1607710533910-d7cdffd9e593?q=75&w=1400&auto=format&fit=crop 1400w"
+              sizes="(min-width: 900px) 50vw, 100vw"
               alt="Håndverk i detalj"
               loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="text">

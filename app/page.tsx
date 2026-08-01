@@ -91,10 +91,14 @@ export default async function Home() {
 
       {/* Hero */}
       <section id="topp" className="home-hero">
+        {/* LCP-bildet: fetchPriority=high + srcset så mobil slipper 2200px-varianten */}
         <img
           className="bg"
-          src="https://images.unsplash.com/flagged/photo-1564767609342-620cb19b2357?q=75&w=2200&auto=format&fit=crop"
+          src="https://images.unsplash.com/flagged/photo-1564767609342-620cb19b2357?q=75&w=1600&auto=format&fit=crop"
+          srcSet="https://images.unsplash.com/flagged/photo-1564767609342-620cb19b2357?q=75&w=640&auto=format&fit=crop 640w, https://images.unsplash.com/flagged/photo-1564767609342-620cb19b2357?q=75&w=960&auto=format&fit=crop 960w, https://images.unsplash.com/flagged/photo-1564767609342-620cb19b2357?q=75&w=1600&auto=format&fit=crop 1600w, https://images.unsplash.com/flagged/photo-1564767609342-620cb19b2357?q=75&w=2200&auto=format&fit=crop 2200w"
+          sizes="100vw"
           alt="Låsesmed i arbeid"
+          fetchPriority="high"
         />
         <div className="scrim-bottom" />
         <div className="scrim-left" />
@@ -165,9 +169,12 @@ export default async function Home() {
             </div>
             <div className="image">
               <img
-                src="https://images.unsplash.com/photo-1677951570313-b0750351c461?q=75&w=1400&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1677951570313-b0750351c461?q=75&w=1080&auto=format&fit=crop"
+                srcSet="https://images.unsplash.com/photo-1677951570313-b0750351c461?q=75&w=480&auto=format&fit=crop 480w, https://images.unsplash.com/photo-1677951570313-b0750351c461?q=75&w=768&auto=format&fit=crop 768w, https://images.unsplash.com/photo-1677951570313-b0750351c461?q=75&w=1080&auto=format&fit=crop 1080w, https://images.unsplash.com/photo-1677951570313-b0750351c461?q=75&w=1400&auto=format&fit=crop 1400w"
+                sizes="(min-width: 900px) 50vw, 100vw"
                 alt="Nøkkel og sylinder"
                 loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -175,9 +182,12 @@ export default async function Home() {
           <div className="service" data-reveal>
             <div className="image">
               <img
-                src="https://images.unsplash.com/photo-1549109926-58f039549485?q=75&w=1400&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1549109926-58f039549485?q=75&w=1080&auto=format&fit=crop"
+                srcSet="https://images.unsplash.com/photo-1549109926-58f039549485?q=75&w=480&auto=format&fit=crop 480w, https://images.unsplash.com/photo-1549109926-58f039549485?q=75&w=768&auto=format&fit=crop 768w, https://images.unsplash.com/photo-1549109926-58f039549485?q=75&w=1080&auto=format&fit=crop 1080w, https://images.unsplash.com/photo-1549109926-58f039549485?q=75&w=1400&auto=format&fit=crop 1400w"
+                sizes="(min-width: 900px) 50vw, 100vw"
                 alt="Kamera og overvåkning"
                 loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="body">
@@ -219,9 +229,12 @@ export default async function Home() {
             </div>
             <div className="image">
               <img
-                src="https://images.unsplash.com/flagged/photo-1564767609213-c75ee685263a?q=75&w=1400&auto=format&fit=crop"
+                src="https://images.unsplash.com/flagged/photo-1564767609213-c75ee685263a?q=75&w=1080&auto=format&fit=crop"
+                srcSet="https://images.unsplash.com/flagged/photo-1564767609213-c75ee685263a?q=75&w=480&auto=format&fit=crop 480w, https://images.unsplash.com/flagged/photo-1564767609213-c75ee685263a?q=75&w=768&auto=format&fit=crop 768w, https://images.unsplash.com/flagged/photo-1564767609213-c75ee685263a?q=75&w=1080&auto=format&fit=crop 1080w, https://images.unsplash.com/flagged/photo-1564767609213-c75ee685263a?q=75&w=1400&auto=format&fit=crop 1400w"
+                sizes="(min-width: 900px) 50vw, 100vw"
                 alt="Montering av dør"
                 loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -321,9 +334,12 @@ export default async function Home() {
         <div className="container about-inner">
           <div className="image" data-reveal>
             <img
-              src="https://images.unsplash.com/photo-1607710533910-d7cdffd9e593?q=75&w=1400&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1607710533910-d7cdffd9e593?q=75&w=1080&auto=format&fit=crop"
+              srcSet="https://images.unsplash.com/photo-1607710533910-d7cdffd9e593?q=75&w=480&auto=format&fit=crop 480w, https://images.unsplash.com/photo-1607710533910-d7cdffd9e593?q=75&w=768&auto=format&fit=crop 768w, https://images.unsplash.com/photo-1607710533910-d7cdffd9e593?q=75&w=1080&auto=format&fit=crop 1080w, https://images.unsplash.com/photo-1607710533910-d7cdffd9e593?q=75&w=1400&auto=format&fit=crop 1400w"
+              sizes="(min-width: 900px) 50vw, 100vw"
               alt="Håndverk i detalj"
               loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="text" data-reveal>
